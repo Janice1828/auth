@@ -5,4 +5,3 @@ const Test = () => {
 };
 sad;
 export default Test;
-asd;
