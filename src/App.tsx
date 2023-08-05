@@ -6,7 +6,6 @@ import Test from "./pages/Test";
 function App() {
   return (
     <BrowserRouter>
-      asd
       <Route path="/" exact component={Login} />
       <Route path="/registration" exact component={Registration} />
       <Route path="/test" exact component={Test}></Route>
