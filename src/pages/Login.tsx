@@ -8,39 +8,42 @@ import Container from "@material-ui/core/Container/Container";
 import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
+import { makeStyles } from "@material-ui/core";
 const Login = () => {
   return (
-    <Container>
-      <form>
-        <Grid container spacing={3}>
-          <Grid item xs={12}>
-            <Typography color="primary" variant="h4">
-              Login Form
-            </Typography>
+    <Box height="100vh">
+      <Container>
+        <form style={{ width: "650px", margin: "auto" }}>
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Typography color="primary" variant="h4" align="center">
+                Login Form
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel htmlFor="email">Email address</InputLabel>
+                <Input id="email" />
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <FormControl fullWidth>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <Input id="password" type="password" />
+              </FormControl>
+            </Grid>
+            <Grid item style={{ display: "flex", gap: "20px" }}>
+              <Button color="primary" variant="contained">
+                Login
+              </Button>
+              <div>
+                OR <Link to="/registration">Register?</Link>
+              </div>
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel htmlFor="my-input">Email address</InputLabel>
-              <Input id="my-input" />
-            </FormControl>
-          </Grid>
-          <Grid item xs={12}>
-            <FormControl fullWidth>
-              <InputLabel htmlFor="my-input">Password</InputLabel>
-              <Input id="my-input" type="password" />
-            </FormControl>
-          </Grid>
-          <Grid item style={{ display: "flex", gap: "20px" }}>
-            <Button color="primary" variant="contained">
-              Login
-            </Button>
-            <div>
-              OR <Link to="/registration">Register?</Link>
-            </div>
-          </Grid>
-        </Grid>
-      </form>
-    </Container>
+        </form>
+      </Container>
+    </Box>
   );
 };
 export default Login;
