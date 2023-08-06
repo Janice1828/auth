@@ -27,6 +27,7 @@ const Login = () => {
 
       if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
         history.push("/home");
+        localStorage.setItem("loggedIn", "true");
       } else {
         alert("Wrong Email Or Password");
       }

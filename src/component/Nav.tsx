@@ -6,7 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import okhatiImg from "../okhatiSolutions.jpg";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -19,11 +20,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Nav() {
+const Nav = () => {
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleLogOut = () => {
+    localStorage.removeItem("loggedIn");
+    history.push("/");
+  };
 
   return (
-    <div className={classes.root} style={{ background: "red !important" }}>
+    <div className={classes.root}>
       <AppBar position="static" style={{ background: "red !important" }}>
         <Toolbar style={{ background: "red !important" }}>
           <Typography variant="h6" className={classes.title}>
@@ -34,13 +41,14 @@ export default function Nav() {
               style={{ borderRadius: "50%" }}
             />
           </Typography>
-          <Button color="secondary">
-            <Link to="/">
-              Log Out &nbsp;<ExitToAppIcon></ExitToAppIcon>
-            </Link>
+          <Button color="secondary" onClick={handleLogOut}>
+            Log Out &nbsp;
+            <ExitToAppIcon />
           </Button>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
+
+export default Nav;
