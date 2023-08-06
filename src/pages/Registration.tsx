@@ -21,22 +21,37 @@ const Registration = () => {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const addData = () => {
-    const datas = {
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword,
-    };
-    const allContacts = [...contacts, datas];
-    setContacts(allContacts);
+  // const addData = () => {
 
-    localStorage.setItem("contacts", JSON.stringify(allContacts));
-  };
+  // };
   const history = useHistory();
   const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    alert("test");
-    e.preventDefault();
-    history.push("/");
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+
+    if (
+      !hasLetter ||
+      !hasNumber ||
+      password !== confirmPassword ||
+      password.length < 8
+    ) {
+      alert("Your Password Format Is Wrong");
+      e.preventDefault();
+    } else {
+      const datas = {
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword,
+      };
+      const allContacts = [...contacts, datas];
+      setContacts(allContacts);
+
+      localStorage.setItem("contacts", JSON.stringify(allContacts));
+      alert("Registered Successfully");
+
+      e.preventDefault();
+      history.push("/");
+    }
   };
   return (
     <Container>
@@ -62,7 +77,13 @@ const Registration = () => {
           </Grid>
           <Grid item xs={12}>
             <FormControl fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
+              <InputLabel htmlFor="password">
+                Password{" "}
+                <span style={{ fontSize: "12px" }}>
+                  ( Password Must Contain at least 8 character long & must
+                  include at least one alphabet and number)
+                </span>
+              </InputLabel>
               <Input
                 id="password"
                 type="password"
@@ -91,12 +112,7 @@ const Registration = () => {
             </FormControl>
           </Grid>
           <Grid item style={{ display: "flex", gap: "20px" }}>
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={addData}
-              type="submit"
-            >
+            <Button color="primary" variant="contained" type="submit">
               Register
             </Button>
             <div>
@@ -105,11 +121,6 @@ const Registration = () => {
           </Grid>
         </Grid>
       </form>
-      <div>
-        {contacts.map((val, ind) => (
-          <p key={ind}>{val.email}</p>
-        ))}
-      </div>
     </Container>
   );
 };
