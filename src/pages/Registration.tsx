@@ -3,7 +3,7 @@ import { FormControl } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Input from "@material-ui/core/Input/Input";
 import Button from "@material-ui/core/Button/Button";
-import Box from "@material-ui/core/Box/Box";
+import { Link } from "react-router-dom";
 import Container from "@material-ui/core/Container/Container";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
@@ -35,14 +35,13 @@ const Registration = () => {
               <Input id="my-input" type="password" />
             </FormControl>
           </Grid>
-          <Grid item>
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={() => alert("test")}
-            >
+          <Grid item style={{ display: "flex", gap: "20px" }}>
+            <Button color="primary" variant="contained">
               Register
             </Button>
+            <div>
+              OR <Link to="/">Login?</Link>
+            </div>
           </Grid>
         </Grid>
       </form>
