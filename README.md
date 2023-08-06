@@ -1,53 +1,29 @@
-# Awesome authentication project
+# Description of the tasks
 
-The project has some setup but still requires some efforts to make it awesome. Therefore, we need someone to help us to make it production ready.
+# I have made three pages:
 
-Note: This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+       i. Home Pages
+       ii. Login Pages
+       iii. Registration Pages
 
-## Returning your solution
+# i have installed some packages for my requirements ex: material icons
 
-- Make a copy of this repository in your github/bitbucket/gitlab account.
-- Make changes, commit them, and push them into your repository.
-- Share us the url of your source code and deployed url link after completion.
+# i have successfully completed the 1,2 and 5 number question in this react-project and i will also complete question no. 3 which is to deploy my project.
 
-## Prerequisite
+# How to use this project
 
-- To help you, all the necessary packages are already specified in the package.json
-- Run app locally in development mode using `yarn && yarn start`.
-- Launch the test runner in the interactive watch mode using `yarn test`.
-- Build the app for production to the build folder using `yarn build`.
+First of all, the login page is displayed and if the user is old then he/she can login, otherwise he/she will have to register account. After successfully registrating account, one can login using the email and password.
+Once the login is completed with valid email and password the user is redirected to the home page.
+Note: the home page cannot be access without loggin in with valid email and passsword.
+After logging in the user can stay in home page or can logout when needed, once he/she logout of his/her account, he/she must again put email and password in order to go to home page and if the logged in user did not logout by clicking the button he/she can have access to the home page until s/he logout.
 
-## Exercises
+# Validations on the tasks
 
-## Attempting all the questions is not a must however, your efforts will be rewarded. Note:- Exercise 1, 2 and 3 are mandatory.
+    # Registration
+      1. Must be in email format
+      2. Password must contain at least one number and alphabet.
+      3. The password must be at least 8 character
+      4. The password and the confirm password must be same.
 
-Hints: Use material design for the [ui](https://material-ui.com/) and feel free to use your own ideas for the design.
-
-### [1] Create register form for user account creation
-
-- The form should include Email, password and confirm password fields.
-- Include validations for the fields, for example email (must be a valid email) and, password (must be at least 8 characters long and include at least a number and an alphabet) and also match with confirm password field.
-- Show success message on registration success and navigate user to login page
-- You can use browser local storage to persist the users account information.
-
-### [2] Build login form so that user can login using the credentials from exercise [1].
-
-- Add email and password field in the login form with field validations.
-- On successful login the user will be greeted with welcome message and navigated to the authenticated page.
-- Keep in mind, the authenticated page is not accessible if the user is not logged in.
-
-### [3] Deploy to netlify
-
-- Deploy your app to netlify/heroku
-
-### [4] Testing
-
-- Write unit test for the app. (tips: [testing-library](https://testing-library.com/))
-
-### [5] Documentation
-
-- Remember to update the README
-
-### [6] Docker
-
-- Make the app run in the docker
+    # Login
+      1. The email and password must be registered.
