@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import okhatiImg from "../okhatiSolutions.jpg";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -34,7 +35,9 @@ export default function Nav() {
             />
           </Typography>
           <Button color="secondary">
-            Log Out &nbsp;<ExitToAppIcon></ExitToAppIcon>
+            <Link to="/">
+              Log Out &nbsp;<ExitToAppIcon></ExitToAppIcon>
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>
