@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { Button } from "@material-ui/core";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import okhatiImg from "../okhatiSolutions.jpg";
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,7 +33,9 @@ export default function Nav() {
               style={{ borderRadius: "50%" }}
             />
           </Typography>
-          <Button color="secondary">Log Out</Button>
+          <Button color="secondary">
+            Log Out &nbsp;<ExitToAppIcon></ExitToAppIcon>
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
