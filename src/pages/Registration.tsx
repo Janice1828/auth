@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControl } from "@material-ui/core";
+import { FormControl, FormHelperText } from "@material-ui/core";
 import InputLabel from "@material-ui/core/InputLabel/InputLabel";
 import Input from "@material-ui/core/Input/Input";
 import Button from "@material-ui/core/Button/Button";
@@ -8,11 +8,17 @@ import Container from "@material-ui/core/Container/Container";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 const Registration = () => {
   const [contacts, setContacts] = useState<
     { email: string; password: string; confirmPassword: string }[]
   >([]);
   const [email, setEmail] = useState("");
+  const emailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+  };
+  const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const addData = () => {
@@ -26,10 +32,15 @@ const Registration = () => {
 
     localStorage.setItem("contacts", JSON.stringify(allContacts));
   };
-
+  const history = useHistory();
+  const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    alert("test");
+    e.preventDefault();
+    history.push("/");
+  };
   return (
     <Container>
-      <form style={{ width: "650px", margin: "auto" }}>
+      <form style={{ width: "650px", margin: "auto" }} onSubmit={formSubmit}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
             <Typography color="primary" variant="h4" align="center">
@@ -43,11 +54,10 @@ const Registration = () => {
                 id="email"
                 value={email}
                 type="email"
+                onChange={emailChange}
                 required
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
               />
+              <FormHelperText error>{emailError}</FormHelperText>
             </FormControl>
           </Grid>
           <Grid item xs={12}>
@@ -59,6 +69,7 @@ const Registration = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
+                required
                 value={password}
               />
             </FormControl>
@@ -71,6 +82,7 @@ const Registration = () => {
               <Input
                 id="confirmPassword"
                 type="password"
+                required
                 value={confirmPassword}
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
@@ -79,7 +91,12 @@ const Registration = () => {
             </FormControl>
           </Grid>
           <Grid item style={{ display: "flex", gap: "20px" }}>
-            <Button color="primary" variant="contained" onClick={addData}>
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={addData}
+              type="submit"
+            >
               Register
             </Button>
             <div>
