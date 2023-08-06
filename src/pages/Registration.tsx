@@ -13,7 +13,7 @@ const Registration = () => {
       <form style={{ width: "650px", margin: "auto" }}>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Typography color="primary" variant="h4">
+            <Typography color="primary" variant="h4" align="center">
               Registration Form
             </Typography>
           </Grid>
