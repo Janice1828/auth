@@ -5,29 +5,31 @@ import Input from "@material-ui/core/Input/Input";
 import Button from "@material-ui/core/Button/Button";
 import Box from "@material-ui/core/Box/Box";
 import Container from "@material-ui/core/Container/Container";
-import { Link, useHistory } from "react-router-dom";
+import { Link, withRouter, RouteComponentProps } from "react-router-dom"; 
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import { makeStyles } from "@material-ui/core";
-const Login = () => {
-  const history = useHistory();
+
+
+const Login: React.FC<RouteComponentProps> = (props) => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const enteredEmail = e.currentTarget.email.value; // Assuming the input field has id="email"
-    const enteredPassword = e.currentTarget.password.value; // Assuming the input field has id="password"
+    const enteredEmail = e.currentTarget.email.value;
+    const enteredPassword = e.currentTarget.password.value;
 
     const getData = JSON.parse(localStorage.getItem("contacts")!);
 
     if (getData) {
-      const storedEmail = getData[0]?.email; // Assuming you're storing an array of objects
+      const storedEmail = getData[0]?.email; 
       const storedPassword = getData[0]?.password;
 
       if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
-        history.push("/home");
         localStorage.setItem("loggedIn", "true");
+        props.history.push("/home"); 
       } else {
         alert("Wrong Email Or Password");
       }
@@ -82,4 +84,5 @@ const Login = () => {
     </Box>
   );
 };
-export default Login;
+
+export default withRouter(Login);
