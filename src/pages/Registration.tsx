@@ -21,9 +21,6 @@ const Registration = () => {
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  // const addData = () => {
-
-  // };
   const history = useHistory();
   const formSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const hasLetter = /[a-zA-Z]/.test(password);

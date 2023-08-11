@@ -9,27 +9,23 @@ import { Link, withRouter, RouteComponentProps } from "react-router-dom";
 import Grid from "@material-ui/core/Grid/Grid";
 import Typography from "@material-ui/core/Typography/Typography";
 import { makeStyles } from "@material-ui/core";
-
-
-const Login: React.FC<RouteComponentProps> = (props) => { 
+import { useHistory } from "react-router-dom";
+const Login= () => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+  let history=useHistory();
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const enteredEmail = e.currentTarget.email.value;
     const enteredPassword = e.currentTarget.password.value;
-
     const getData = JSON.parse(localStorage.getItem("contacts")!);
-
     if (getData) {
       const storedEmail = getData[0]?.email; 
       const storedPassword = getData[0]?.password;
-
       if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
         localStorage.setItem("loggedIn", "true");
-        props.history.push("/home"); 
+        history.push("/home"); 
+        window.location.reload();
       } else {
         alert("Wrong Email Or Password");
       }

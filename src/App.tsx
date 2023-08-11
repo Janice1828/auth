@@ -14,18 +14,7 @@ function App() {
       <Route path="/" exact component={Login} />
       <Route path="/registration" exact component={Registration} />
       <Route path="/test" exact component={Test} />
-      <Route
-        path="/home"
-        exact
-        render={({ location }) =>
-          auth ? (
-            <Home />
-          ) : (
-            <Redirect
-              to={{
-                pathname: "/",
-                state: { from: location },
-              }}
+      <Route path="/home" exact render={({ location }) => auth ? ( <Home /> ) : (<Redirect to={{ pathname: "/", state: { from: location },}}
             />
           )
         }
